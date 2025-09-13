@@ -1,7 +1,4 @@
 import os
-import PIL
-import scipy
-
 
 import tensorflow as tf
 from tensorflow.keras import layers
@@ -104,6 +101,7 @@ class ModelCreator:
         # self.vit_compile_train(model, train_generator, validation_generator, eps)
         return model
 
+    '''
     def vit_compile_train(self, model, train_generator, validation_generator, eps):
         # Esse metodo prepara o modelo para o treinamento.
         model.compile(
@@ -152,3 +150,4 @@ class ModelCreator:
 
         # Salvar os pesos após o treinamento
         model.save_weights('vit_eyes.weights.h5')
+    '''
