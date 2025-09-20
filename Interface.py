@@ -69,6 +69,13 @@ class Interface(QWidget):
         self.btn_tensorboard.clicked.connect(self.open_logs)
         self.btn_exit.clicked.connect(self.exit_program)
 
+        # Definindo o status inicial dos botões
+        self.btn_select_folder.setEnabled(True)
+        self.btn_network_build.setEnabled(False)
+        self.btn_train.setEnabled(False)
+        self.btn_tensorboard.setEnabled(True)
+        self.btn_exit.setEnabled(True)
+
         # ----------------------------------------------
 
         # Atributos referentes ao carregamento dos dados
@@ -111,7 +118,7 @@ class Interface(QWidget):
         # Inserção de label para definir a versão do software
         # Seguindo o padrão de Versionamento Semântico
         # MAJOR.MINOR.PATCH-SUFIX
-        self.version_label = QLabel("Ver. 0.1.0-alfa", self)
+        self.version_label = QLabel("Ver. 0.1.0-beta", self)
         self.version_label.setAlignment(Qt.AlignCenter)
         button_layout.addWidget(self.version_label)
 
@@ -154,6 +161,9 @@ class Interface(QWidget):
         self.add_log_message(log_validation_samples)
         self.add_log_message(log_indexes)
         self.add_log_message('--------------------------------------------------------')
+
+        # Definindo o status do botão de construção da rede
+        self.btn_network_build.setEnabled(True)
 
     def build_network(self):
 
@@ -205,6 +215,9 @@ class Interface(QWidget):
             self.add_log_message(f'Rede compilada com sucesso!')
             self.add_log_message(f'Quantidade de classes encontradas: {self.dataset_classes}')
         self.add_log_message('--------------------------------------------------------')
+
+        # Definindo o status do botão de construção da rede
+        self.btn_train.setEnabled(True)
 
     def train_network(self):
 
